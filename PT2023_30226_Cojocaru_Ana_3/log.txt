@@ -1,0 +1,6 @@
+----------BILL-------
+ Clientul cu numele: Popa Marcel
+ A cumparat: 1 produse
+ Pret/bucata: 15.00
+ Total de plata: 15.00
+
