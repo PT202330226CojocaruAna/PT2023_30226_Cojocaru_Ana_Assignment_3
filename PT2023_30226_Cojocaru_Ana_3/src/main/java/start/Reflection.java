@@ -8,7 +8,7 @@ public class Reflection {
     int i;
 
     /**
-     * @param object
+     * @param object obiect
      */
     public static void retrieveProperties(Object object) {
 
@@ -28,8 +28,8 @@ public class Reflection {
         }
 
     /**
-     * @param obj
-     * @return
+     * @param obj obiect
+     * @return obiect
      */
         public static List<Object> getValues(Object obj) {
        // ArrayList<Object> values = new ArrayList<>();
@@ -46,8 +46,8 @@ public class Reflection {
         }
 
     /**
-     * @param obj
-     * @return
+     * @param obj obiect
+     * @return obiect
      */
     public static List<String> getFields(Object obj){
         List<String> fieldNames = new ArrayList<>();

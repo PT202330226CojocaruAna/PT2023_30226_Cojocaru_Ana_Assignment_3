@@ -31,6 +31,13 @@ public class Client {
         this.age=age;
 
     }
+
+    /**
+     * @param name -
+     * @param address-
+     * @param email-
+     * @param age-
+     */
     public Client(String name, String address, String email, int age) {
 
         this.name=name;
@@ -40,6 +47,9 @@ public class Client {
 
     }
 
+    /**
+     * @return returneaza id client
+     */
     public int getId(){
         return id;
     }
@@ -47,33 +57,65 @@ public class Client {
         this.id=id;
     }
 
+    /**
+     * @return returneaza numele
+     */
     public String getName(){
         return name;
     }
+
+    /**
+     * @param name nume setat
+     */
     public void setName(String name){
         this.name=name;
     }
 
+    /**
+     * @return getaddress
+     */
     public String getAddress(){
         return address;
     }
+
+    /**
+     * @param address set address
+     */
     public void setAddress(String address){
         this.address=address;
     }
 
+    /**
+     * @return email
+     */
     public String getEmail(){
         return email;
     }
+
+    /**
+     * @param email seteaza email
+     */
     public void setEmail(String email){
         this.email=email;
     }
+
+    /**
+     * @return retureana varsta
+     */
     public int getAge(){
         return age;
     }
+
+    /**
+     * @param age seteaza varsta
+     */
     public void setAge(int age){
         this.age=age;
     }
 
+    /**
+     * @return toString
+     */
     @Override
     public String toString(){
         return "Client: id  "+id+" - name "+name;

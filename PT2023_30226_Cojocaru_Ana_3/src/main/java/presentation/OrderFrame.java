@@ -30,6 +30,10 @@ public class OrderFrame extends JFrame{
     OrderBLL orderBLL = new OrderBLL();
     int quantity =0;
     List<String> lista = new ArrayList<String>();
+
+    /**
+     * creeaza order frame
+     */
     public OrderFrame(){
         super("ORDER");
         OrderBLL orderBLL = new OrderBLL();

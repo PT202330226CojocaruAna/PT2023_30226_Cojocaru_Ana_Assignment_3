@@ -10,6 +10,9 @@ public class NameBox extends JPanel{
     private JComboBox nameLabel;
     private JTextField nameField;
 
+    /**
+     * name box -- nefolosita
+     */
     public NameBox() {
 
         ClientBLL clientBLL1 = new ClientBLL();

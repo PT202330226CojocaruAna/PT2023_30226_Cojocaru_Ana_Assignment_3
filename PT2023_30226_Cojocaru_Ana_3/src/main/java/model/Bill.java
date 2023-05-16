@@ -62,6 +62,12 @@ public record Bill ( int codProdus, int cantitate, double price, int idClient){
     }
 
 
+    /**
+     * @param codProdus -
+     * @param cantitate-
+     * @param price-
+     * @param numeClient-
+     */
    // public static void calculateBill(String nume, double amount,int quantity, double pret) {
     public static void calculateBill(int codProdus, int cantitate, double price,String numeClient) {
 /*
@@ -115,14 +121,23 @@ public record Bill ( int codProdus, int cantitate, double price, int idClient){
 
     }
 
+    /**
+     * @return  id
+     */
     public int getIdClient(){
         return idClient;
     }
 
+    /**
+     * @return  cod
+     */
     public int getCodProdus(){
         return codProdus;
     }
 
+    /**
+     * @return  cantitate
+     */
     public int getCantitate(){
         return cantitate ;
     }
@@ -132,6 +147,9 @@ public record Bill ( int codProdus, int cantitate, double price, int idClient){
     }*/
 
 
+    /**
+     * @return toString
+     */
     public String toString(){
         return "Clientul cu id: "+ idClient+"\nA cumparat: "+ cantitate+" "+codProdus;
     }

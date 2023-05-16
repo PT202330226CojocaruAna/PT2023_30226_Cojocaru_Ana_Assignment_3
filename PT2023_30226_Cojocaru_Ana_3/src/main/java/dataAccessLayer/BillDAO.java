@@ -32,6 +32,9 @@ public class BillDAO<Bill>  {
     private static final String PASS = "octombrie";
 
 
+    /**
+     * @return select query
+     */
     private String createSelectQuery(){
         StringBuilder sb = new StringBuilder();
         sb.append("SELECT ");
@@ -40,6 +43,10 @@ public class BillDAO<Bill>  {
         return sb.toString();
     }
 
+    /**
+     * @param field campuri
+     * @return insert
+     */
     private String createInsertQuery(ArrayList<String> field){
         StringBuilder sb = new StringBuilder();
         sb.append("INSERT INTO log (");
@@ -67,6 +74,11 @@ public class BillDAO<Bill>  {
         return sb.toString();
     }
 
+    /**
+     * @param t obiect
+     * @param values valori
+     * @param fields campuri
+     */
     private void getValuesFromT(Bill t,ArrayList<Object> values,ArrayList<String> fields){
         for(Field field:t.getClass().getDeclaredFields()){
             field.setAccessible(true);
@@ -81,6 +93,9 @@ public class BillDAO<Bill>  {
         }
     }
 
+    /**
+     * @param t obiect
+     */
     public void insert(Bill t) {
         Connection connection = null;
         PreparedStatement statement = null;

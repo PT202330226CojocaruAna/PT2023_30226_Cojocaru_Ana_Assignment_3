@@ -14,8 +14,8 @@ public class App {
         protected static final Logger LOGGER = Logger.getLogger(App.class.getName());
 
     /**
-     * @param args
-     * @throws SQLException
+     * @param args argumente
+     * @throws SQLException exceptie
      */
         public static void main(String[] args) throws SQLException {
 

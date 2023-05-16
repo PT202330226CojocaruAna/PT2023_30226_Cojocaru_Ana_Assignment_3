@@ -278,6 +278,10 @@ public class AbstractDAO<T> {
         return null;
     }
 
+    /**
+     * @param name string
+     * @return obiect
+     */
     public T findByName(String name) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -299,6 +303,10 @@ public class AbstractDAO<T> {
         return null;
     }
 
+    /**
+     * @param resultSet rezultat
+     * @return lista
+     */
     private List<T> createObjects(ResultSet resultSet) {
         List<T> list = new ArrayList<T>();
         Constructor[] ctors = type.getDeclaredConstructors();
@@ -360,6 +368,11 @@ public class AbstractDAO<T> {
     }*/
 
 
+    /**
+     * @param t obiect
+     * @param values valori
+     * @param fields campuri
+     */
     private void getValuesFromT(T t,ArrayList<Object> values,ArrayList<String> fields){
         for(Field field:t.getClass().getDeclaredFields()){
             field.setAccessible(true);
@@ -374,6 +387,9 @@ public class AbstractDAO<T> {
         }
     }
 
+    /**
+     * @param t obiect
+     */
     public void insert(T t) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -405,6 +421,10 @@ public class AbstractDAO<T> {
         }
     }
 
+    /**
+     * @param t obiect
+     * @param id id obiect
+     */
     public void update(T t, int id) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -437,6 +457,10 @@ public class AbstractDAO<T> {
         }
     }
 
+    /**
+     * @param t obiect
+     * @param codProdus cod produs de actualizat
+     */
     public void updateP(T t, int codProdus) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -470,6 +494,9 @@ public class AbstractDAO<T> {
     }
 
 
+    /**
+     * @param id id de sters
+     */
     public void delete(int id){
         Connection connection = null;
         PreparedStatement statement = null;
@@ -490,6 +517,9 @@ public class AbstractDAO<T> {
 
     }
 
+    /**
+     * @param codProdus produs de sters
+     */
     public void deleteProduct(int codProdus){
         Connection connection = null;
         PreparedStatement statement = null;

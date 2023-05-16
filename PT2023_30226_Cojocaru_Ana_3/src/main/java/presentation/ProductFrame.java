@@ -123,6 +123,9 @@ public class ProductFrame extends JFrame {
                         Dimension buttonSize2 = new Dimension(200, 50);
                         b.setPreferredSize(buttonSize2);
                         b.addActionListener(new ActionListener() {
+                            /**
+                             * @param e the event to be processed
+                             */
                             @Override
                             public void actionPerformed(ActionEvent e) {
                                 try{
@@ -166,6 +169,9 @@ public class ProductFrame extends JFrame {
                 }*/
             });
             edit.addActionListener(new ActionListener() {
+                /**
+                 * @param e the event to be processed
+                 */
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if(e.getSource() == edit) {
@@ -229,6 +235,9 @@ public class ProductFrame extends JFrame {
                 }
             });
             delete.addActionListener(new ActionListener() {
+                /**
+                 * @param e the event to be processed
+                 */
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if (e.getSource() == delete) {
@@ -276,6 +285,9 @@ public class ProductFrame extends JFrame {
 
             });
             all.addActionListener(new ActionListener() {
+                /**
+                 * @param e2 the event to be processed
+                 */
                 public void actionPerformed(ActionEvent e2) {
 
                     JFrame frame = new JFrame("View products");

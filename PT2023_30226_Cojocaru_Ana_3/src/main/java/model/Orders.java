@@ -13,11 +13,11 @@ public class Orders {
     }
 
     /**
-     * @param number
-     * @param idClient
-     * @param codProdus
-     * @param cantitate
-     * @param price
+     * @param number numar comanda
+     * @param idClient id
+     * @param codProdus cod produs
+     * @param cantitate cantitate
+     * @param price pret
      */
     public Orders(int number, int idClient, int codProdus, int cantitate, double price){
 
@@ -28,6 +28,12 @@ public class Orders {
         this.price=price;
     }
 
+    /**
+     * @param idClient id
+     * @param codProdus cod produs
+     * @param cantitate cantitate
+     * @param price pret
+     */
     public Orders(int idClient, int codProdus, int cantitate, double price){
 
         this.idClient=idClient;
