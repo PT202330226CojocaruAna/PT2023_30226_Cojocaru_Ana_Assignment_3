@@ -1,16 +1,21 @@
 package presentation;
 
+import businessLayer.BillBLL;
 import businessLayer.ClientBLL;
 import businessLayer.OrderBLL;
 import businessLayer.ProductBLL;
+import com.mysql.cj.x.protobuf.MysqlxCrud;
 import dataAccessLayer.ClientDAO;
+import model.Bill;
 import model.Client;
+import model.Orders;
 import model.Product;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +27,7 @@ public class OrderFrame extends JFrame{
     private JTextField status, statusText;
     private JButton validate;
     private JButton plasare;
+    OrderBLL orderBLL = new OrderBLL();
     int quantity =0;
     List<String> lista = new ArrayList<String>();
     public OrderFrame(){
@@ -106,6 +112,7 @@ public class OrderFrame extends JFrame{
 
                         String produs = (String)productt.getSelectedItem(); // produs selectat
                         String clientSelectat = (String)clientss.getSelectedItem(); //client selectat
+                        Client client1 = (new ClientBLL()).findClientByName(clientSelectat);
                         ProductBLL productBLL1 = new ProductBLL(); //random
                         Product product; // produs selectat
                         product = productBLL1.findByName(produs);
@@ -128,6 +135,14 @@ public class OrderFrame extends JFrame{
                             cant -= quantity;
                             prod.setCantitate(cant);
                             productBLL1.updateProductByCod(prod, cod);
+                            System.out.println(client1.getId());
+                            System.out.println(product.getCodProdus());
+                            System.out.println(quantity);
+                            System.out.println(quantity);
+                            System.out.println(product.getPrice());
+                            Orders or = new Orders(client1.getId(),product.getCodProdus(),quantity,product.getPrice());
+                           // Orders or = new Orders(1,4,1,15);
+                            orderBLL.insertOrder(or);
                         }
                     }
             }
@@ -135,7 +150,7 @@ public class OrderFrame extends JFrame{
         plasare.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e2) {
                 String produs = (String)productt.getSelectedItem(); // produs selectat
-                String clientSelectat = (String)clientss.getSelectedItem(); //client selectat
+                String clientSelectat = new String((String)clientss.getSelectedItem()); //client selectat
                 ProductBLL productBLL1 = new ProductBLL(); //random
                 Product product; // produs selectat
                 product = productBLL1.findByName(produs);
@@ -144,10 +159,18 @@ public class OrderFrame extends JFrame{
                 catch(NumberFormatException e10) {}
                 String i = clientSelectat;
                // Product pp = productBLL1.findByName(produs);
-                double j = product.getPrice();
+                double j = product.getPrice(); //PRICE
                 double pretFinal = quantity*j;
-                model.Bill.calculateBill(i, j,quantity,pretFinal);
+               // model.Bill.calculateBill(i, j,quantity,pretFinal);
 
+                System.out.println(clientSelectat);
+                Client c = clientBLL.findClientByName(clientSelectat);
+                int idSel= c.getId();
+
+               // model.Bill.calculateBill(clientSelectat,product.getCodProdus(),quantity,pretFinal);
+                Bill bill = new Bill(product.getCodProdus(),quantity,j,idSel);
+                (new BillBLL()).insert(bill);
+                System.out.println(bill);
                 dispose();
             }
         });

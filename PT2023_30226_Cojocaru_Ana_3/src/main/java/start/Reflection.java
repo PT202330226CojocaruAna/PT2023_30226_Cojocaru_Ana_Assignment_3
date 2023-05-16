@@ -7,6 +7,9 @@ import java.util.*;
 public class Reflection {
     int i;
 
+    /**
+     * @param object
+     */
     public static void retrieveProperties(Object object) {
 
         for (Field field : object.getClass().getDeclaredFields()) {

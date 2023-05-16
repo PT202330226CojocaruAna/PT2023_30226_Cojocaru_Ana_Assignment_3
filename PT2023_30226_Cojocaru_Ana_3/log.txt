@@ -1,6 +1,6 @@
-----------BILL-------
- Clientul cu numele: Popa Marcel
- A cumparat: 1 produse
- Pret/bucata: 15.00
- Total de plata: 15.00
+----------BILL--------
+Clientul cu id: Rafa Florina
+A cumparat: 1 boluri
+Pret/bucata: 15.00
+Total de plata: 15.00
 

@@ -23,6 +23,9 @@ public class ClientFrame extends JFrame {
     private JTextField idNew,nameNew,addressNew,emailNew,ageNew;
     private JTextArea status;
 
+    /**
+     * creeaza ClientFrame si executa operatiile aferente clientilor
+     */
     public ClientFrame(){
         super("CLIENTS");
 

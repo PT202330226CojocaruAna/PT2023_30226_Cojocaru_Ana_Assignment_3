@@ -20,12 +20,18 @@ public class AbstractDAO<T> {
 
     private final Class<T> type;
 
+    /**
+     *
+     */
     @SuppressWarnings("unchecked")
     public AbstractDAO() {
         this.type = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 
     }
 
+    /**
+     * @return retunreaza string-ul corespunzator Query-ului
+     */
     private String createSelectQuery(){
         StringBuilder sb = new StringBuilder();
         sb.append("SELECT ");
@@ -35,6 +41,9 @@ public class AbstractDAO<T> {
         return sb.toString();
     }
 
+    /**
+     * @return retunreaza string-ul corespunzator Query-ului
+     */
     private String createSelectAllQuery()
     {
         StringBuilder str = new StringBuilder();
@@ -46,6 +55,9 @@ public class AbstractDAO<T> {
 
     }
 
+    /**
+     * @return retunreaza string-ul corespunzator Query-ului
+     */
     public String createSelectWhereQuery(String field) {
         StringBuilder sb = new StringBuilder();
         sb.append("SELECT ");
@@ -56,6 +68,9 @@ public class AbstractDAO<T> {
         return sb.toString();
     }
 
+    /**
+     * @return retunreaza string-ul corespunzator Query-ului INSERT
+     */
     private String createInsertQuery(ArrayList<String> field){
         StringBuilder sb = new StringBuilder();
         sb.append("INSERT INTO "+type.getSimpleName()+ " (");
@@ -83,6 +98,10 @@ public class AbstractDAO<T> {
         return sb.toString();
     }
 
+
+    /**
+     * @return retunreaza string-ul corespunzator Query-ului
+     */
     private String createUpdateQuery(ArrayList<String> fields){
         StringBuilder sb = new StringBuilder();
         sb.append("UPDATE " + type.getSimpleName());
@@ -98,6 +117,10 @@ public class AbstractDAO<T> {
         return sb.toString();
     }
 
+
+    /**
+     * @return retunreaza string-ul corespunzator Query-ului
+     */
     private String createUpdateQueryP(ArrayList<String> fields){
         StringBuilder sb = new StringBuilder();
         sb.append("UPDATE " + type.getSimpleName());
@@ -113,6 +136,10 @@ public class AbstractDAO<T> {
         return sb.toString();
     }
 
+
+    /**
+     * @return retunreaza string-ul corespunzator Query-ului
+     */
     private String createDeleteQuery(String field){
         StringBuilder sb = new StringBuilder();
         sb.append("DELETE FROM ");
@@ -151,7 +178,7 @@ public class AbstractDAO<T> {
 
     /**
      * generic method that returns all rows of a table
-     * @return
+     * @return all
      */
     public List<T> findAll(){
 
@@ -199,6 +226,10 @@ public class AbstractDAO<T> {
         return null;
     }*/
 
+    /**
+     * @param id  id
+     * @return obiect
+     */
     public T findById(int id) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -221,7 +252,11 @@ public class AbstractDAO<T> {
         return null;
     }
 
-    public T findByCod(int id) {
+    /**
+     * @param cod cod
+     * @return obiect gasit
+     */
+    public T findByCod(int cod) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -229,7 +264,7 @@ public class AbstractDAO<T> {
         try {
             connection = ConnectionFactory.getConnection();
             statement = connection.prepareStatement(query);
-            statement.setInt(1, id);
+            statement.setInt(1, cod);
             resultSet = statement.executeQuery();
 
             return createObjects(resultSet).get(0);
@@ -455,16 +490,16 @@ public class AbstractDAO<T> {
 
     }
 
-    public void deleteProduct(int id){
+    public void deleteProduct(int codProdus){
         Connection connection = null;
         PreparedStatement statement = null;
-        String query = createDeleteQuery("id");
-        T t = findById(id);
+        String query = createDeleteQuery("codProdus");
+        T t = findByCod(codProdus);
         try {
             int i;
             connection = ConnectionFactory.getConnection();
             statement = connection.prepareStatement(query);
-            statement.setInt(1, id);
+            statement.setInt(1, codProdus);
             statement.execute();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

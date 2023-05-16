@@ -16,9 +16,14 @@ import java.util.List;
 public class ProductFrame extends JFrame {
 
     private JButton add, edit, delete, all, back;
+    private JButton bDel;
     private JTextField codProdusDelete, name, price, cantitate;
     private JTextField codProdusNew, nameNew, priceNew, cantitateNew;
     private JTextArea status;
+
+    /**
+     * creeaza fereastra pentru produse, adaugare, eliminare, editare, vizualizare
+     */
     public ProductFrame() {
         super("PRODUCTS");
             add = new JButton("ADD NEW PRODUCT");
@@ -26,6 +31,7 @@ public class ProductFrame extends JFrame {
             delete = new JButton("DELETE PRODUCT");
             all = new JButton("ALL PRODUCTS");
             back = new JButton("back");
+            bDel = new JButton("REMOVE");
 
             codProdusDelete = new JTextField(20);
             name = new JTextField(20);
@@ -226,36 +232,25 @@ public class ProductFrame extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if (e.getSource() == delete) {
-                        JFrame frameDelete = new JFrame("REMOVE CLIENT");
+                        JFrame frameDelete = new JFrame("REMOVE PRODUCT");
                         JPanel fieldDelete = new JPanel(new GridLayout(6, 2, 5, 5));
                         JPanel butonDelete = new JPanel(new FlowLayout());
 
-                        JTextField idDelete = new JTextField(20);
+                        JTextField idDelete1 = new JTextField(20);
 
                         fieldDelete.add(idLabel);
-                        fieldDelete.add(codProdusDelete);
+                        fieldDelete.add(idDelete1);
 
                         JButton b = new JButton("REMOVE");
-                        butonDelete.add(b);
-                       // butonDelete.add(back);
-                        b.setBackground(Color.PINK);
-                        back.setBackground(Color.PINK);
-
-                        back.addActionListener(new ActionListener() {
-                            public void actionPerformed(ActionEvent e2) {
-                                frameDelete.dispose();
-                            }
-                        });
-
-                        Dimension buttonSize2 = new Dimension(200, 50);
-                        b.setPreferredSize(buttonSize2);
-                        b.addActionListener(new ActionListener() {
+                        butonDelete.add(bDel);
+                        bDel.setBackground(Color.PINK);
+                        bDel.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
                                 try {
-                                    //Client cl = new Client(name.getText(), address.getText(), email.getText(), Integer.parseInt(age.getText()));
                                     ProductBLL bl = new ProductBLL();
-                                    bl.deleteProduct(Integer.parseInt(idDelete.getText()));
+                                    System.out.println(Integer.parseInt(idDelete1.getText()));
+                                    bl.deleteProduct(Integer.parseInt(idDelete1.getText()));
                                     status.setText("PRODUS STERS");
                                     frameDelete.dispose();
                                 } catch (NumberFormatException e9) {

@@ -29,7 +29,7 @@ public class ConnectionFactory {
 
     /**
      * Method that create the connection with database
-     * @return
+     * @return conexiunea
      */
     private Connection createConnection()
     {
@@ -45,13 +45,16 @@ public class ConnectionFactory {
     }
 
 
+    /**
+     * @return conexiune
+     */
     public static Connection getConnection() {
         return singleInstance.createConnection();
     }
 
     /**
      * method used to close the connection
-     * @param connection
+     * @param connection conexiune
      */
     public static void close(Connection connection) {
         if (connection != null) {
@@ -65,7 +68,7 @@ public class ConnectionFactory {
 
     /**
      * method used to close the connection using a statement
-     * @param statement
+     * @param statement conexiune
      */
     public static void close(Statement statement) {
         if (statement != null) {
@@ -79,7 +82,7 @@ public class ConnectionFactory {
 
     /**
      * method used to close the connection using a result set
-     * @param resultSet
+     * @param resultSet rezultat
      */
 
     public static void close(ResultSet resultSet) {

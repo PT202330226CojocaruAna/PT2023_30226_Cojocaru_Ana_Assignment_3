@@ -13,6 +13,9 @@ public class MainFrame extends JFrame {
     private JButton productButton = new JButton("PRODUCTS");
     private JButton orderButton = new JButton("ORDERS");
 
+    /**
+     * contine butoanele pentru Clients, Orders, Product
+     */
     public MainFrame() {
         super("MainFrame");
         clientButton.addActionListener(new ActionListener() {
